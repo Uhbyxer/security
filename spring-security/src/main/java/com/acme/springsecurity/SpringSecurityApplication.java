@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 
@@ -15,6 +16,12 @@ import java.util.Collections;
 public class SpringSecurityApplication implements CommandLineRunner {
 
 	private UserRepository userRepository;
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	@Autowired
 	public void setUserRepository(UserRepository userRepository) {
@@ -30,7 +37,7 @@ public class SpringSecurityApplication implements CommandLineRunner {
 		userRepository.deleteAll();
 		userRepository.save(User.builder()
 				.username("user")
-				.password("{noop}password")
+				.password(passwordEncoder.encode("password"))
 				.authorities(Collections.singletonList(Role.USER))
 				.accountNonExpired(true)
 				.accountNonLocked(true)
