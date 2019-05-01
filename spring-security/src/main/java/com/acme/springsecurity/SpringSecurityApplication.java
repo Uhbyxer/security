@@ -12,12 +12,12 @@ public class SpringSecurityApplication {
 		SpringApplication.run(SpringSecurityApplication.class, args);
 	}
 
-	@Autowired
-	public void configureGrobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder
-		.inMemoryAuthentication()
-		.withUser("user")
-		.password("{noop}password") //withDefaultPasswordEncoder
-		.roles("USER");
-	}
+//	@Autowired
+//	public void configureGrobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+//		authenticationManagerBuilder
+//		.inMemoryAuthentication()
+//		.withUser("user")
+//		.password("{noop}password") //withDefaultPasswordEncoder
+//		.roles("USER");
+//	}
 }
