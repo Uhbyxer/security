@@ -44,9 +44,30 @@ public class SpringSecurityApplication implements CommandLineRunner {
 				.credentialsNonExpired(true)
 				.enabled(true)
 				.build());
+		userRepository.save(User.builder()
+				.username("admin")
+				.password(passwordEncoder.encode("Password"))
+				.authorities(Collections.singletonList(Role.ADMIN))
+				.accountNonExpired(true)
+				.accountNonLocked(true)
+				.credentialsNonExpired(true)
+				.enabled(true)
+				.build());
+
+		userRepository.save(User.builder()
+				.username("power")
+				.password(passwordEncoder.encode("passworD"))
+				.authorities(Collections.singletonList(Role.POWER_USER))
+				.accountNonExpired(true)
+				.accountNonLocked(true)
+				.credentialsNonExpired(true)
+				.enabled(true)
+				.build());
 
 		System.out.println("============");
 		System.out.println("find by username: " + userRepository.findByUsername("user"));
+		System.out.println("find by username: " + userRepository.findByUsername("admin"));
+		System.out.println("find by username: " + userRepository.findByUsername("power"));
 	}
 
 	//	@Autowired
