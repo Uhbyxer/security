@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //		return User.builder()
 //				.username(username)
 //				.password("{noop}password")
-//				.authorities(Collections.singletonList(Role.USER))
+//				.authorities(Collections.singletonList(Role.ROLE_USER))
 //				.accountNonExpired(true)
 //				.accountNonLocked(true)
 //				.credentialsNonExpired(true)

@@ -1,5 +1,5 @@
 ---
-security:
-  basic:
-    enabled: true
-  sessions: stateless
+jwt:
+  token:
+    secret: secret_word
+    expired: 36000000000

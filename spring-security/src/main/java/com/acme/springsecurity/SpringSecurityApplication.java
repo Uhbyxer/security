@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
@@ -38,7 +37,7 @@ public class SpringSecurityApplication implements CommandLineRunner {
 		userRepository.save(User.builder()
 				.username("user")
 				.password(passwordEncoder.encode("password"))
-				.authorities(Collections.singletonList(Role.USER))
+				.authorities(Collections.singletonList(Role.ROLE_USER))
 				.accountNonExpired(true)
 				.accountNonLocked(true)
 				.credentialsNonExpired(true)
@@ -47,7 +46,7 @@ public class SpringSecurityApplication implements CommandLineRunner {
 		userRepository.save(User.builder()
 				.username("admin")
 				.password(passwordEncoder.encode("Password"))
-				.authorities(Collections.singletonList(Role.ADMIN))
+				.authorities(Collections.singletonList(Role.ROLE_ADMIN))
 				.accountNonExpired(true)
 				.accountNonLocked(true)
 				.credentialsNonExpired(true)
@@ -57,7 +56,7 @@ public class SpringSecurityApplication implements CommandLineRunner {
 		userRepository.save(User.builder()
 				.username("power")
 				.password(passwordEncoder.encode("passworD"))
-				.authorities(Collections.singletonList(Role.POWER_USER))
+				.authorities(Collections.singletonList(Role.ROLE_POWER_USER))
 				.accountNonExpired(true)
 				.accountNonLocked(true)
 				.credentialsNonExpired(true)
@@ -76,6 +75,6 @@ public class SpringSecurityApplication implements CommandLineRunner {
 //		.inMemoryAuthentication()
 //		.withUser("user")
 //		.password("{noop}password") //withDefaultPasswordEncoder
-//		.roles("USER");
+//		.roles("ROLE_USER");
 //	}
 }
